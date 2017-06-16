@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Locator game</title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="bootstrap-tour.css" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="bootstrap-tour.js"></script>
+    <script src="jquery.toaster.js"></script>
+    <script src="data.js"></script>
+    <script src="exercise.js"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+        input#expression {
+            width: 450px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#">Locator Game</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Desafios <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">cssSelector Básico</li>
+                            <li><a href="#" onclick="goToLevel(0)">nome da tag</a></li>
+                            <li><a href="#" onclick="goToLevel(1)">ID</a></li>
+                            <li><a href="#" onclick="goToLevel(2)">classe</a></li>
+                            <li><a href="#" onclick="goToLevel(3)">valor de atributo igual</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">cssSelector Avançado</li>
+                            <li><a href="#" onclick="goToLevel(4)">Descendente</a></li>
+                            <li><a href="#" onclick="goToLevel(5)">Filho</a></li>
+                            <li><a href="#" onclick="goToLevel(6)">first-of-type()</a></li>
+                            <li><a href="#" onclick="goToLevel(7)">last-of-type</a></li>
+                            <li><a href="#" onclick="goToLevel(8)">nth-child</a></li>
+                            <li><a href="#" onclick="goToLevel(9)">valor de atributo - contém</a></li>
+                            <li><a href="#" onclick="goToLevel(10)">valor de atributo - inicia</a></li>
+                            <li><a href="#" onclick="goToLevel(11)">valor de atributo - termina</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://eliasnogueira.com">eliasnogueira.com</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Navbar example</h2>
+        </div>
+        
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="helpTitle"></h3>
+                        </div>
+                        <div class="panel-body">
+                            <p id="helpText"></p>
+                            <h5>Exemplo</h5>
+                            <p id="examples"></p>      
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Informe aqui o seletor CSS</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><span class="glyphicon glyphicon-console" aria-hidden="true"></span></div>
+                                        <input type="text" class="form-control" id="expression" width="200px" name="expression" placeholder="Locator" autocomplete="off">
+                                    </div>
+                                </div>
+                                <a class="btn btn-info" id="try" role="button" href="index.html">Tentar!</a>
+                                <button type="submit" class="btn btn-primary" >Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">HTML</h3>
+                        </div>
+                        <div class="panel-body">
+                            <pre><code class="html"></code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">HTML Renderizado</h3>
+                        </div>
+                        <div class="panel-body">
+                            <pre id="render"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="console"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">eliasnogueira.com</p>
+        </div>
+    </footer>
+
+</body>
+</html>
