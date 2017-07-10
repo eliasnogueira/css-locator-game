@@ -184,7 +184,7 @@ var levels = [
         helpText: "Para localizar um elemento com um valor parcial é necessário usar o <code>*</code> antes do símbolo de igual (<code>=</code>).",
         examples: [
             'Elemento: <code>&lt;input id="239_usuario_239" /></code>',
-            'Locator: <code>input[value=*"usuario"]</code>'
+            'Locator: <code>input[value*="usuario"]</code>'
         ],
         html: `
 <form>
@@ -205,7 +205,7 @@ var levels = [
         helpText: "Para localizar um elemento com um valor inicial é necessário usar o <code>^</code> antes do símbolo de igual (<code>=</code>).",
         examples: [
             'Elemento: <code>&lt;input id="usuario_239" /></code>',
-            'Locator: <code>input[value=^"usuario"]</code>'
+            'Locator: <code>input[value^="usuario"]</code>'
         ],
         html: `
 <form>
