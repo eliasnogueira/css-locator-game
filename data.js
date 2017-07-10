@@ -140,13 +140,13 @@ var levels = [
         id: 8,
         instruction: "Selecionar a última div",
         helpTitle: "Seleção do último do tipo",
-        helpText: "Para selecionar o último elemento de muitos iguais usamos a função <code>:last-of-type()</code>.",        
+        helpText: "Para selecionar o último elemento de muitos iguais usamos a função <code>:last-of-type</code>.",        
         selector: {
             css: "div:last-of-type"
         },
         examples: [
             'Elemento: <code>&lt;div>Texto1&lt;/div> &lt;div>Texto2&lt;/div>  &lt;div>Encontre&lt;/div></code>',
-            'Locator: <code>div:first-of-type</code>'
+            'Locator: <code>div:last-of-type</code>'
         ],
         html: `
 <div>Primeira div</div>

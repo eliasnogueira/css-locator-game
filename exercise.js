@@ -52,10 +52,6 @@ $(document).ready(function () {
         hljs.highlightBlock(block);
     });
 
-    $('#toggleHelp').click(function (event) {
-        $('#help').toggle();
-    });
-
     $('#try').click(function (event) {
         event.preventDefault();
         var userExpr;
@@ -77,11 +73,15 @@ $(document).ready(function () {
 
         win = (userExpr.sequenceEqual(ruleExpr));
         if (win) {
-            currentLevel++;
-            $.toaster({message: 'Muito bem!!!', title: '', priority: 'info'});
+            if (currentLevel == 12) {
+                alert("Parabéns! Você é o nosso usário de número 1.000 \n Digo.... parabéns por completar todos os desafios");
+            } else {
+                currentLevel++;
+                $.toaster({message: 'Muito bem!!!', title: '', priority: 'info'});
                 setTimeout(function () {
                     loadLevel();
                 }, 500);
+            } 
         } else {
             setTimeout(function () {
                 userExpr.removeClass('highlight');
